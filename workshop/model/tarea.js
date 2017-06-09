@@ -1,10 +1,8 @@
-function Tarea(unaDescripcion,unNombre,unaLista){
+function Tarea(unNombre,unaDescripcion){
 	this.descripcion = unaDescripcion;
 	this.estado = 'incompleta';
-	this.lista = unaLista;
 	this.nombre = unNombre;
-	this.nodo = agregarNodo(this.nombre,'li',this.lista,unNombre);
-
+	
 	this.completar = function(){
 		this.estado = 'completada';
 	}
