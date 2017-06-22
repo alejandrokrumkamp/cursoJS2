@@ -9,9 +9,4 @@ function Tarea(unNombre,unaDescripcion){
 		else
 			this.estado = 'incompleta';
 	}
-
-	this.actualizarDatos = function(unaDescripcion,unNombre){
-		this.descripcion = unaDescripcion;
-		this.nombre = unNombre;
-	}
 }
