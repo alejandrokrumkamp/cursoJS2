@@ -4,10 +4,18 @@ function crearLista(unNombre){
 	var nodoUlLista = document.getElementById(unaLista.nombre);
 	var botonEliminarLista = agregarNodo('eliminar-'+unNombre,'button',nodoUlLista);
 	botonEliminarLista.addEventListener("click",()=>{eliminarLista(nodoUlLista,unaLista);});
+	
+	var formularioNuevaTarea = agregarNodo('Cargar nueva tarea','form',nodoUlLista,);
+	var inputNombreTarea = agregarNodo('nombreTarea','input',formularioNuevaTarea);
+	inputNombreTarea.setAttribute("placeholder","Nombre de la tarea");
+	var inputDescripcionTarea =agregarNodo('descripcionTarea','input',formularioNuevaTarea);
+	inputDescripcionTarea.setAttribute("placeholder","Descripcion de la tarea");
+	var botonEnviarNuevaTarea = agregarNodo('enviar','button',formularioNuevaTarea);
+	botonEnviarNuevaTarea.setAttribute("type","submit");
 	return unaLista;
 }
 
-function agregarTarea(unNombre,unaDescripcion,listaPadre){
+function inicializarTarea(unNombre,unaDescripcion,listaPadre){
 	var nuevaTarea = new Tarea(unNombre,unaDescripcion);
 	listaPadre.agregarTarea(nuevaTarea);
 
@@ -19,7 +27,7 @@ function agregarTarea(unNombre,unaDescripcion,listaPadre){
 	checkbox.setAttribute("type","checkbox");
 
 	botonEliminarTarea.addEventListener("click", function(){eliminarTarea(nodoListaPadre,listaPadre,nodoNuevaTarea,nuevaTarea);});
-	checkbox.addEventListener("click", function(){toggleTarea(nodoListaPadre,listaPadre,nodoNuevaTarea);});
+	checkbox.addEventListener("click", function(){nuevaTarea.toggle();});
 
 	return nuevaTarea;
 }
@@ -31,7 +39,6 @@ function eliminarTarea(nodoListaPadre,listaPadre,nodoUnaTarea,unaTarea){
 }
 
 function eliminarLista(nodoUnaLista,unaLista){
-	console.log(nodoUnaLista);
 	body.removeChild(nodoUnaLista);
 	delete unaLista.regex;
 }

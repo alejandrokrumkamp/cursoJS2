@@ -13,6 +13,6 @@ function Lista(unNombre){
 	}
 
 	this.guardar = function(){
-		localstorage.setItem(this.nombre,this);
+		//localstorage.setItem(this.nombre,this);
 	}
 }
