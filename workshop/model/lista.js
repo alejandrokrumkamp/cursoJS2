@@ -1,15 +1,15 @@
 function Lista(unNombre){
-	this.elementos = [];
+	this.tareas = [];
 	this.nombre = unNombre;
 	
 	this.agregarTarea = function(tarea){
-		this.elementos.add(tarea);
+		this.tareas.push(tarea);
 	}
 
 	this.eliminarTarea = function(tarea){
-		var indice = this.elementos.indexOf(tarea);
+		var indice = this.tareas.indexOf(tarea);
 		if(indice > -1)
-			this.elementos.splice(indice,1);
+			this.tareas.splice(indice,1);
 	}
 
 	this.guardar = function(){

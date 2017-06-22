@@ -2,19 +2,29 @@ function crearLista(unNombre){
 	var unaLista = new Lista(unNombre);
 	agregarNodo(unNombre,'ul',body);
 	var ulLista = document.getElementById(unaLista.nombre);
-	agregarNodo('eliminar '+unNombre,'button',ulLista).addEventListener("click",()=>{alert("Eliminar "+ unNombre);});
-
-	//Guardar Localstorage
+	var nodoUlLista = agregarNodo('eliminar-'+unNombre,'button',ulLista);
+	nodoUlLista.addEventListener("click",()=>{alert("Eliminar "+ unNombre);});
 	return unaLista;
 }
 
-function agregarTarea(unNombre,unaDescripcion,unaLista){
-	var listaPadre = document.getElementById(unaLista.nombre);
-	var unaTarea = new Tarea(unNombre,unaDescripcion);
-	agregarNodo(unaTarea.nombre,'li',listaPadre,unaDescripcion);
-	var nuevaTarea = document.getElementById(unaTarea.nombre);
-	agregarNodo('eliminar '+unaTarea.nombre,'button',nuevaTarea).addEventListener("click", ()=>{alert("Eliminar " +unaTarea.nombre);});
-	var checkbox = agregarNodo('eliminar '+unaTarea.nombre,'input',nuevaTarea,"","preAppend")
+function agregarTarea(unNombre,unaDescripcion,listaPadre){
+	var nuevaTarea = new Tarea(unNombre,unaDescripcion);
+	listaPadre.agregarTarea(nuevaTarea);
+
+	var nodoListaPadre = document.getElementById(listaPadre.nombre);
+	agregarNodo(nuevaTarea.nombre,'li',nodoListaPadre,unaDescripcion);
+	var nodoNuevaTarea = document.getElementById(nuevaTarea.nombre);
+	var botonEliminarTarea = agregarNodo('eliminar','button',nodoNuevaTarea);
+	var checkbox = agregarNodo('checkbox','input',nodoNuevaTarea,"","preAppend")
 	checkbox.setAttribute("type","checkbox");
-	return unaTarea;
+
+	botonEliminarTarea.addEventListener("click", function(){eliminarTarea(nodoListaPadre,listaPadre,nodoNuevaTarea,nuevaTarea);});
+	checkbox.addEventListener("click", function(){toggleTarea(nodoListaPadre,listaPadre,nodoNuevaTarea);});
+
+	return nuevaTarea;
+}
+
+function eliminarTarea(nodoListaPadre,listaPadre,nodoUnaTarea,unaTarea){
+	listaPadre.eliminarTarea(unaTarea)
+	nodoListaPadre.removeChild(nodoUnaTarea);
 }

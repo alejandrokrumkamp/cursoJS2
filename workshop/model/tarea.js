@@ -3,12 +3,11 @@ function Tarea(unNombre,unaDescripcion){
 	this.estado = 'incompleta';
 	this.nombre = unNombre;
 	
-	this.completar = function(){
-		this.estado = 'completada';
-	}
-
-	this.deshacer = function(){
-		this.estado = 'incompleta';
+	this.toggle = function(){
+		if(this.estado == 'incompleta')
+			this.estado = 'completada';
+		else
+			this.estado = 'incompleta';
 	}
 
 	this.actualizarDatos = function(unaDescripcion,unNombre){
