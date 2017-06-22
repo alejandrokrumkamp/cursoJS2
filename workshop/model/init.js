@@ -5,9 +5,9 @@ var unaTarea;
 
 function init(){ 
 	//if(!unaLista){
-		var todo = crearLista('todo');
-		agregarTarea('tarea1','una descripcion',todo);
-		agregarTarea('tarea2','otra descripcion',todo);
+		var toDo = crearLista(unNombre);
+		agregarTarea('tarea1','una descripcion',toDo);
+		agregarTarea('tarea2','otra descripcion',toDo);
 	//} else {
 	//	console.log("ya existe la lista todo en localstorage");
 	//}

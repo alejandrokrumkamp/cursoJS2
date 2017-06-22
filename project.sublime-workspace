@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"otro",
+				"otroNumero"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"pro",
+				"prompt"
+			],
+			[
 				"sc",
 				"script\tTag"
 			],
@@ -16,10 +28,39 @@
 	"buffers":
 	[
 		{
-			"file": "clase1/index.html",
+			"contents": "",
 			"settings":
 			{
-				"buffer_size": 196,
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/index.php",
+			"settings":
+			{
+				"buffer_size": 14890,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<!-- service -->\n      <section class=\"servicebg\" id=\"service-sec\">\n      \n        \n        <!-- service gallery -->\n        <div class=\"container\">\n          <div class=\"row\">\n            <div class=\"onStep\" data-animation=\"fadeInUp\" data-time=\"600\" id=\"services\">\n              <div class=\"col-md-12 col-xs-12\">\n                <div class=\"service webdesign text-center\">\n                  <h2 style=\"color: white;text-shadow: 0px 2px black;\">Nosotros</h2>\n\n                  <p style=\"color: white;text-shadow:\n   -1px -1px 0 #000,\n    1px -1px 0 #000,\n   -1px 1px 0 #000,\n    1px 1px 0 #000;font-size: 20px;\"><strong>VORTÉCNICA INDUSTRIAL S.A.</strong> - \n                  \nUN EQUIPO CON VOCACIÓN.\n                  </p>\n                </div>\n              </div>\n              \n            </div>\n          </div>\n\n          <div class=\"space-double\"></div>\n        </div>\n        <!-- service gallery end -->\n      \n      </section>\n      <!-- service end -->\n      \n      <!-- section projects -->\n      <section class=\"whitepage no-bottom no-top\" id=\"projects\">\n      \n        <div class=\"space-single\"></div>\n        \n       <!-- -->\n       \n       <div style=\"width: 80%;margin: auto; text-align: center;\"><p>\n\n        \n        <div class=\"space-single\"></div>\n\n          <p>\n\nNuestra Empresa, dedicada a brindar servicios industriales en áreas de fluidos, intercambio y separación, posee un\n\nequipo dinámico y flexible con técnicos de reconocida trayectoria y compromiso, que trabajan día a día para\n\nperfeccionar el concepto de un servicio profesional.\n\nLa estrecha relación entre las áreas de Ingeniería, mantenimiento y producción asegura un servicio de gran calidad y\n\neficiencia.</p>\n\n        </div>\n        <div class=\"space-single\"></div>\n       <!-- -->\n       <!-- yellow -->\n      <section class=\"yellow-page v-align\">\n        <div class=\"container\">\n          <div class=\"row\">\n            <div class=\"col-md-6 col-md-offset-3\">\n              <a class=\"popup-form\" ><h4 class=\"text-center onStep\" data-animation=\"fadeInUp\" data-time=\"600\">RODOLFO DUBROVICH, Presidente</h4></a>\n            </div>\n          </div>\n        </div>\n      </section>\n      <!-- -->\n       \n       <div style=\"width: 80%;margin: auto; text-align: center;\"><p>\n\n        \n        <div class=\"space-single\"></div>\n\n\n          <p>\n          Con 30 años de formación técnica, Rodolfo Dubrovich es experto en procesos y tecnología de separación centrífuga.\n\n          A partir de 2010, desde el área técnica de Vortécnica Industrial S.A, desarrolló y diseño los siguientes proyectos:\n          </p>\n          <ul style=\"text-align: left;\">\n\n          - 2014-Módulo de separación centrífuga de slop oil, skid de trasbase y bombeo para área clasificada y módulo\n\n          CCM\n\n           2013-Planta móvil de tratamiento de efluentes, elegido en concurso propulsado por la secretaría de\n\n          desarrollo provincial entre 130 municipios de la Provincia de Bs. As.\n\n           2013/2014 Sistema de control automático de velocidad diferencial para separadoras decanters y VT control,\n\n          sistema de monitoreo on line remoto. Ambos implementados.\n          <li>- Reparación integral de separadoras centrífugas decanters y verticales a discos, Todas las marcas</li>\n\n          <li>- Provisión de piezas y repuestos conforme a especificaciones de cada fabricante con materiales importados y nacionales certificados.</li>\n\n          <li>- Garantizamos la más alta performance en rendimiento sobre recrecidos standart y especiales, conforme a cada aplicación de tornillos tranportadores de decanters.</li>\n          </ul>\n\n        </div>\n        <div class=\"space-single\"></div>\n       <!-- -->",
+			"file": "/C/xampp/htdocs/nosotros.html",
+			"file_size": 3002,
+			"file_write_time": 131385943890835245,
+			"settings":
+			{
+				"buffer_size": 3695,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/rslides/slides.htm",
+			"settings":
+			{
+				"buffer_size": 2630,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -32,12 +73,24 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 0.0,
-		"last_filter": "",
+		"height": 150.0,
+		"last_filter": "Package Control: ins",
 		"selected_items":
 		[
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: I",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -57,7 +110,11 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Shino/Google Drive/Desarrollo Web/Github/cursoJS2/clase2/index.html",
+		"/C/Users/Shino/Google Drive/Desarrollo Web/Github/cursoJS2/clase2/codigo.js",
 		"/C/Users/Shino/Google Drive/Desarrollo Web/Github/cursoJS2/clase1/estilos.css",
+		"/C/Users/Shino/Google Drive/Desarrollo Web/Github/cursoJS2/clase1/codigo.js",
+		"/C/Users/Shino/Google Drive/Desarrollo Web/Github/cursoJS2/clase1/index.html",
 		"/C/Users/Shino/Desktop/Curso JS/index.js",
 		"/C/Users/Shino/Google Drive/Desarrollo Web/Github/Vortecnica/index.html",
 		"/C/Users/Shino/Google Drive/Desarrollo Web/Github/Panambi/php/contact.php",
@@ -69,7 +126,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -84,6 +141,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Servicio te",
 			"quienes",
 			"zaro",
 			"resto",
@@ -114,35 +172,125 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "clase1/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 196,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								104,
-								104
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/xampp/htdocs/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14890,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10427,
+								10427
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4505.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/xampp/htdocs/nosotros.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3695,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2755,
+								2647
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1160.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/xampp/htdocs/rslides/slides.htm",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1627,
+								1627
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 411.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -179,6 +327,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
