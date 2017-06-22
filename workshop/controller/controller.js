@@ -1,9 +1,9 @@
 function crearLista(unNombre){
 	var unaLista = new Lista(unNombre);
 	agregarNodo(unNombre,'ul',body);
-	var ulLista = document.getElementById(unaLista.nombre);
-	var nodoUlLista = agregarNodo('eliminar-'+unNombre,'button',ulLista);
-	nodoUlLista.addEventListener("click",()=>{alert("Eliminar "+ unNombre);});
+	var nodoUlLista = document.getElementById(unaLista.nombre);
+	var botonEliminarLista = agregarNodo('eliminar-'+unNombre,'button',nodoUlLista);
+	botonEliminarLista.addEventListener("click",()=>{eliminarLista(nodoUlLista,unaLista);});
 	return unaLista;
 }
 
@@ -27,4 +27,11 @@ function agregarTarea(unNombre,unaDescripcion,listaPadre){
 function eliminarTarea(nodoListaPadre,listaPadre,nodoUnaTarea,unaTarea){
 	listaPadre.eliminarTarea(unaTarea)
 	nodoListaPadre.removeChild(nodoUnaTarea);
+	delete unaTarea.regex;
+}
+
+function eliminarLista(nodoUnaLista,unaLista){
+	console.log(nodoUnaLista);
+	body.removeChild(nodoUnaLista);
+	delete unaLista.regex;
 }
