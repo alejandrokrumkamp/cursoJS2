@@ -19,6 +19,8 @@ function crearLista(unNombre){
 		var valorDescripcionNuevaLista = document.getElementById('descripcionTarea-'+unaLista.nombre).value;
 		inicializarTarea(valorNombreNuevaLista,valorDescripcionNuevaLista,unaLista);
 	});
+
+	localStorage.setItem(unaLista, JSON.stringify(unaLista));
 	return unaLista;
 }
 
@@ -39,6 +41,9 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre){
 
 	nodoDescripcionTarea.addEventListener("click",function(){activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea)});
 
+	localStorage.clear();
+	localStorage.setItem(unaLista, JSON.stringify(unaLista));
+	
 	return nuevaTarea;
 }
 

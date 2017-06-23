@@ -1,15 +1,15 @@
 var body = document.getElementsByTagName('body')[0];
 var unNombre = 'toDo';
-//var unaLista = localStorage.getItem(unNombre); 
+var unaLista = localStorage.getItem(unNombre); 
 var unaTarea;
 
 function init(){ 
-	//if(!unaLista){
+	if(!unaLista){
 		var toDo = crearLista(unNombre);
 		inicializarTarea('tarea1','una descripcion',toDo);
 		inicializarTarea('tarea2','otra descripcion',toDo);
-	//} else {
-	//	console.log("ya existe la lista todo en localstorage");
-	//}
+	} else {
+		console.log("ya existe la lista todo en localstorage");
+	}
 
 }
