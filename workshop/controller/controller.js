@@ -37,19 +37,28 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre){
 	botonEliminarTarea.addEventListener("click", function(){eliminarTarea(nodoListaPadre,listaPadre,nodoNuevaTarea,nuevaTarea);});
 	checkbox.addEventListener("click", function(){nuevaTarea.toggle();});
 
-	nodoDescripcionTarea.addEventListener("click",function(){editarDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea)});
+	nodoDescripcionTarea.addEventListener("click",function(){activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea)});
 
 	return nuevaTarea;
 }
 
-function editarDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
+function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
 	var descripcionTarea = document.getElementById(unaTarea.nombre+'-descripcion');
-	var valorDescripcionTarea = descripcionTarea.value;
+	var valorDescripcionTarea = descripcionTarea.innerText;
 	nodoUnaTarea.removeChild(descripcionTarea);
 	var formularioEditarTarea = agregarNodo('formEditar-' + unaTarea.nombre,'form',nodoUnaTarea,"","secondLast");
 	var inputEditarTarea = agregarNodo('inputEditar-'+unaTarea.nombre,'input',formularioEditarTarea);
+	inputEditarTarea.value = valorDescripcionTarea;
 	var botonEnviarNuevaTarea = agregarNodo('editar','button',formularioEditarTarea);
 	botonEnviarNuevaTarea.setAttribute("type","submit");
+
+	formularioEditarTarea.addEventListener("submit",function(event){
+		event.preventDefault();
+		valorDescripcionTarea = inputEditarTarea.value;
+		var nodoDescripcionTarea = agregarNodo(unaTarea.nombre+'-descripcion','p',nodoUnaTarea,valorDescripcionTarea,"secondLast");
+		nodoDescripcionTarea.addEventListener("click",function(){activarEdicionDescripcion(nodoDescripcionTarea,unaTarea,nodoUnaTarea)});
+		nodoUnaTarea.removeChild(formularioEditarTarea);
+	});
 
 }
 
