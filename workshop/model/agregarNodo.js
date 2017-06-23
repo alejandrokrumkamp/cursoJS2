@@ -11,6 +11,8 @@
 		nuevoNodo.setAttribute("id",id);
 		if(appendType === "preAppend")
 			padre.insertBefore(nuevoNodo,padre.firstChild);
+		else if(appendType === "secondLast")
+			padre.insertBefore(nuevoNodo,padre.lastChild);
 		else
 			padre.appendChild(nuevoNodo);
 
