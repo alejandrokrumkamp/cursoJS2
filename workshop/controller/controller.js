@@ -1,5 +1,6 @@
-function crearLista(unNombre){
+function crearLista(unNombre,unaListaPrecargada){
 	var unaLista = new Lista(unNombre);
+
 	agregarNodo(unNombre,'ul',body);
 	var nodoUlLista = document.getElementById(unaLista.nombre);
 	var botonEliminarLista = agregarNodo('eliminar-'+unNombre,'button',nodoUlLista);
@@ -20,13 +21,24 @@ function crearLista(unNombre){
 		inicializarTarea(valorNombreNuevaLista,valorDescripcionNuevaLista,unaLista);
 	});
 
-	localStorage.setItem(unaLista, JSON.stringify(unaLista));
 	return unaLista;
 }
 
-function inicializarTarea(unNombre,unaDescripcion,listaPadre){
-	var nuevaTarea = new Tarea(unNombre,unaDescripcion);
-	listaPadre.agregarTarea(nuevaTarea);
+function inicializarTarea(unNombre,unaDescripcion,listaPadre,esPrecargado){
+	var nuevaTarea;
+	if(esPrecargado == undefined){
+		nuevaTarea = new Tarea(unNombre,unaDescripcion);
+		listaPadre.agregarTarea(nuevaTarea);
+	} else {
+		for(i in listaPadre.tareas){
+			var tareaPrecargada = listaPadre.tareas[i];
+			if(tareaPrecargada.nombre == unNombre){
+				var tareaPrecargada = listaPadre.tareas[i];
+				nuevaTarea = new Tarea(tareaPrecargada.nombre,tareaPrecargada.descripcion);
+			}
+		}
+	}
+
 
 	var nodoListaPadre = document.getElementById(listaPadre.nombre);
 	agregarNodo(nuevaTarea.nombre,'li',nodoListaPadre);
@@ -36,13 +48,31 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre){
 	var checkbox = agregarNodo('checkbox','input',nodoNuevaTarea,"","preAppend")
 	checkbox.setAttribute("type","checkbox");
 
-	botonEliminarTarea.addEventListener("click", function(){eliminarTarea(nodoListaPadre,listaPadre,nodoNuevaTarea,nuevaTarea);});
-	checkbox.addEventListener("click", function(){nuevaTarea.toggle();});
+	if(nuevaTarea.estado == "completada")
+		checkbox.setAttribute("checked","checked");
+	else
+		checkbox.removeAttribute("checked");
 
-	nodoDescripcionTarea.addEventListener("click",function(){activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea)});
+	botonEliminarTarea.addEventListener("click", function(){
+		eliminarTarea(nodoListaPadre,listaPadre,nodoNuevaTarea,nuevaTarea);
+		localStorage.clear();
+		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
+	});
+	
+	checkbox.addEventListener("click", function(){
+		nuevaTarea.toggle();
+		localStorage.clear();
+		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
+	});
+
+	nodoDescripcionTarea.addEventListener("click",function(){
+		activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea);
+		localStorage.clear();
+		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
+	});
 
 	localStorage.clear();
-	localStorage.setItem(unaLista, JSON.stringify(unaLista));
+	localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
 	
 	return nuevaTarea;
 }
@@ -70,10 +100,8 @@ function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
 function eliminarTarea(nodoListaPadre,listaPadre,nodoUnaTarea,unaTarea){
 	listaPadre.eliminarTarea(unaTarea)
 	nodoListaPadre.removeChild(nodoUnaTarea);
-	delete unaTarea.regex;
 }
 
 function eliminarLista(nodoUnaLista,unaLista){
 	body.removeChild(nodoUnaLista);
-	delete unaLista.regex;
 }
