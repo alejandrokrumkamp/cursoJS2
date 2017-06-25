@@ -60,7 +60,7 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre,estado){
 	});
 
 	nodoDescripcionTarea.addEventListener("click",function(){
-		activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea,listaPadre.nombre);
+		activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea,listaPadre);
 		localStorage.clear();
 		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
 	});
@@ -88,6 +88,14 @@ function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea,list
 		nodoDescripcionTarea.addEventListener("click",function(){activarEdicionDescripcion(nodoDescripcionTarea,unaTarea,nodoUnaTarea)});
 		nodoUnaTarea.removeChild(formularioEditarTarea);
 
+		for(i in listaPadre.tareas){
+			var tareaCargada = listaPadre.tareas[i];
+			if(tareaCargada.nombre == unaTarea.nombre)
+				tareaCargada.descripcion = valorDescripcionTarea;
+		}
+
+		console.log("Lista Padre:");
+		console.log(listaPadre.tareas[0]);
 		localStorage.clear();
 		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
 	});
