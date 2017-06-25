@@ -6,12 +6,14 @@ function crearLista(unNombre){
 	/*var botonEliminarLista = agregarNodo('eliminar-'+unNombre,'button',nodoUlLista);
 	botonEliminarLista.addEventListener("click", function(){eliminarLista(nodoUlLista,unaLista);});*/
 	
-	var formularioNuevaTarea = agregarNodo('Cargar nueva tarea en ' + unaLista.nombre + ' ','form',nodoUlLista,);
+	var formularioNuevaTarea = agregarNodo('nuevaTarea','form',nodoUlLista,'Cargar nueva tarea en '+ unaLista.nombre);
 	var inputNombreTarea = agregarNodo('nombreTarea-'+unaLista.nombre,'input',formularioNuevaTarea);
 	inputNombreTarea.setAttribute("placeholder","Nombre de la tarea");
+	inputNombreTarea.setAttribute("type","text");
 	var inputDescripcionTarea =agregarNodo('descripcionTarea-'+unaLista.nombre,'input',formularioNuevaTarea);
 	inputDescripcionTarea.setAttribute("placeholder","Descripcion de la tarea");
-	var botonEnviarNuevaTarea = agregarNodo('enviar','button',formularioNuevaTarea);
+	inputDescripcionTarea.setAttribute("type","text");
+	var botonEnviarNuevaTarea = agregarNodo('enviar','button',formularioNuevaTarea,"Agregar nueva tarea");
 	botonEnviarNuevaTarea.setAttribute("type","submit");
 
 	formularioNuevaTarea.addEventListener("submit",function(event){
@@ -31,8 +33,6 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre,estado){
 		listaPadre.agregarTarea(nuevaTarea);
 		if(estado != undefined)
 			nuevaTarea.estado = estado;
-
-
 
 	var nodoListaPadre = document.getElementById(listaPadre.nombre);
 	agregarNodo(nuevaTarea.nombre,'li',nodoListaPadre);
@@ -75,8 +75,9 @@ function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea,list
 	var descripcionTarea = document.getElementById(unaTarea.nombre+'-descripcion');
 	var valorDescripcionTarea = descripcionTarea.innerText;
 	nodoUnaTarea.removeChild(descripcionTarea);
-	var formularioEditarTarea = agregarNodo('formEditar-' + unaTarea.nombre,'form',nodoUnaTarea,"Editar: ","secondLast");
+	var formularioEditarTarea = agregarNodo('formEditar-' + unaTarea.nombre,'form',nodoUnaTarea,"","secondLast");
 	var inputEditarTarea = agregarNodo('inputEditar-'+unaTarea.nombre,'input',formularioEditarTarea);
+	inputEditarTarea.setAttribute("type","text");
 	inputEditarTarea.value = valorDescripcionTarea;
 	var botonEnviarNuevaTarea = agregarNodo('editar','button',formularioEditarTarea);
 	botonEnviarNuevaTarea.setAttribute("type","submit");
