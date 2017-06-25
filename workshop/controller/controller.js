@@ -1,4 +1,4 @@
-function crearLista(unNombre,unaListaPrecargada){
+function crearLista(unNombre){
 	var unaLista = new Lista(unNombre);
 
 	agregarNodo(unNombre,'ul',body);
@@ -24,20 +24,15 @@ function crearLista(unNombre,unaListaPrecargada){
 	return unaLista;
 }
 
-function inicializarTarea(unNombre,unaDescripcion,listaPadre,esPrecargado,estado){
+function inicializarTarea(unNombre,unaDescripcion,listaPadre,estado){
 	var nuevaTarea;
-	if(esPrecargado == undefined){
+
 		nuevaTarea = new Tarea(unNombre,unaDescripcion);
 		listaPadre.agregarTarea(nuevaTarea);
-	} else {
-		for(i in listaPadre.tareas){
-			var tareaPrecargada = listaPadre.tareas[i];
-			if(tareaPrecargada.nombre == unNombre){
-				var tareaPrecargada = listaPadre.tareas[i];
-				nuevaTarea = new Tarea(tareaPrecargada.nombre,tareaPrecargada.descripcion);
-			}
-		}
-	}
+		if(estado != undefined)
+			nuevaTarea.estado = estado;
+		console.log("hola");
+
 
 
 	var nodoListaPadre = document.getElementById(listaPadre.nombre);
@@ -100,6 +95,7 @@ function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
 function eliminarTarea(nodoListaPadre,listaPadre,nodoUnaTarea,unaTarea){
 	listaPadre.eliminarTarea(unaTarea)
 	nodoListaPadre.removeChild(nodoUnaTarea);
+	
 }
 
 function eliminarLista(nodoUnaLista,unaLista){
