@@ -3,10 +3,10 @@ function crearLista(unNombre){
 
 	agregarNodo(unNombre,'ul',body);
 	var nodoUlLista = document.getElementById(unaLista.nombre);
-	var botonEliminarLista = agregarNodo('eliminar-'+unNombre,'button',nodoUlLista);
-	botonEliminarLista.addEventListener("click", function(){eliminarLista(nodoUlLista,unaLista);});
+	/*var botonEliminarLista = agregarNodo('eliminar-'+unNombre,'button',nodoUlLista);
+	botonEliminarLista.addEventListener("click", function(){eliminarLista(nodoUlLista,unaLista);});*/
 	
-	var formularioNuevaTarea = agregarNodo('Cargar nueva tarea en ' + unaLista.nombre,'form',nodoUlLista,);
+	var formularioNuevaTarea = agregarNodo('Cargar nueva tarea en ' + unaLista.nombre + ' ','form',nodoUlLista,);
 	var inputNombreTarea = agregarNodo('nombreTarea-'+unaLista.nombre,'input',formularioNuevaTarea);
 	inputNombreTarea.setAttribute("placeholder","Nombre de la tarea");
 	var inputDescripcionTarea =agregarNodo('descripcionTarea-'+unaLista.nombre,'input',formularioNuevaTarea);
@@ -75,7 +75,7 @@ function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea,list
 	var descripcionTarea = document.getElementById(unaTarea.nombre+'-descripcion');
 	var valorDescripcionTarea = descripcionTarea.innerText;
 	nodoUnaTarea.removeChild(descripcionTarea);
-	var formularioEditarTarea = agregarNodo('formEditar-' + unaTarea.nombre,'form',nodoUnaTarea,"","secondLast");
+	var formularioEditarTarea = agregarNodo('formEditar-' + unaTarea.nombre,'form',nodoUnaTarea,"Editar: ","secondLast");
 	var inputEditarTarea = agregarNodo('inputEditar-'+unaTarea.nombre,'input',formularioEditarTarea);
 	inputEditarTarea.value = valorDescripcionTarea;
 	var botonEnviarNuevaTarea = agregarNodo('editar','button',formularioEditarTarea);

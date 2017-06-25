@@ -4,7 +4,7 @@
 		if(!texto){
 			var nuevoNodoTexto = document.createTextNode(id);
 		} else {
-			var nuevoNodoTexto = document.createTextNode(id + ': ' + texto);
+			var nuevoNodoTexto = document.createTextNode(texto);
 		}
 		nuevoNodo.appendChild(nuevoNodoTexto);
 
