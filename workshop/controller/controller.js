@@ -31,7 +31,6 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre,estado){
 		listaPadre.agregarTarea(nuevaTarea);
 		if(estado != undefined)
 			nuevaTarea.estado = estado;
-		console.log("hola");
 
 
 
@@ -61,7 +60,7 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre,estado){
 	});
 
 	nodoDescripcionTarea.addEventListener("click",function(){
-		activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea);
+		activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea,listaPadre.nombre);
 		localStorage.clear();
 		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
 	});
@@ -72,7 +71,7 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre,estado){
 	return nuevaTarea;
 }
 
-function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
+function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea,listaPadre){
 	var descripcionTarea = document.getElementById(unaTarea.nombre+'-descripcion');
 	var valorDescripcionTarea = descripcionTarea.innerText;
 	nodoUnaTarea.removeChild(descripcionTarea);
@@ -88,6 +87,9 @@ function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
 		var nodoDescripcionTarea = agregarNodo(unaTarea.nombre+'-descripcion','p',nodoUnaTarea,valorDescripcionTarea,"secondLast");
 		nodoDescripcionTarea.addEventListener("click",function(){activarEdicionDescripcion(nodoDescripcionTarea,unaTarea,nodoUnaTarea)});
 		nodoUnaTarea.removeChild(formularioEditarTarea);
+
+		localStorage.clear();
+		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
 	});
 
 }

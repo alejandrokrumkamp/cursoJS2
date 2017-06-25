@@ -13,7 +13,8 @@ function init(){
 		for(i in unaListaLS.tareas){
 			var tareaPrecargada = unaListaLS.tareas[i];
 			console.log(tareaPrecargada);
-			inicializarTarea(tareaPrecargada.nombre,tareaPrecargada.descripcion,listaPrecargada,true,tareaPrecargada.estado);
+			console.log(tareaPrecargada.estado);
+			inicializarTarea(tareaPrecargada.nombre,tareaPrecargada.descripcion,listaPrecargada,tareaPrecargada.estado);
 		}
 		console.log("ya existe la lista todo en localstorage");
 	}
