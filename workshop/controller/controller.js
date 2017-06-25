@@ -24,7 +24,7 @@ function crearLista(unNombre,unaListaPrecargada){
 	return unaLista;
 }
 
-function inicializarTarea(unNombre,unaDescripcion,listaPadre,esPrecargado){
+function inicializarTarea(unNombre,unaDescripcion,listaPadre,esPrecargado,estado){
 	var nuevaTarea;
 	if(esPrecargado == undefined){
 		nuevaTarea = new Tarea(unNombre,unaDescripcion);
