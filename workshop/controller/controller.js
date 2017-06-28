@@ -1,17 +1,19 @@
-function crearLista(unNombre,unaListaPrecargada){
+function crearLista(unNombre){
 	var unaLista = new Lista(unNombre);
 
 	agregarNodo(unNombre,'ul',body);
 	var nodoUlLista = document.getElementById(unaLista.nombre);
-	var botonEliminarLista = agregarNodo('eliminar-'+unNombre,'button',nodoUlLista);
-	botonEliminarLista.addEventListener("click", function(){eliminarLista(nodoUlLista,unaLista);});
+	/*var botonEliminarLista = agregarNodo('eliminar-'+unNombre,'button',nodoUlLista);
+	botonEliminarLista.addEventListener("click", function(){eliminarLista(nodoUlLista,unaLista);});*/
 	
-	var formularioNuevaTarea = agregarNodo('Cargar nueva tarea en ' + unaLista.nombre,'form',nodoUlLista,);
+	var formularioNuevaTarea = agregarNodo('nuevaTarea','form',nodoUlLista,'Cargar nueva tarea en '+ unaLista.nombre);
 	var inputNombreTarea = agregarNodo('nombreTarea-'+unaLista.nombre,'input',formularioNuevaTarea);
 	inputNombreTarea.setAttribute("placeholder","Nombre de la tarea");
+	inputNombreTarea.setAttribute("type","text");
 	var inputDescripcionTarea =agregarNodo('descripcionTarea-'+unaLista.nombre,'input',formularioNuevaTarea);
 	inputDescripcionTarea.setAttribute("placeholder","Descripcion de la tarea");
-	var botonEnviarNuevaTarea = agregarNodo('enviar','button',formularioNuevaTarea);
+	inputDescripcionTarea.setAttribute("type","text");
+	var botonEnviarNuevaTarea = agregarNodo('enviar','button',formularioNuevaTarea,"Agregar nueva tarea");
 	botonEnviarNuevaTarea.setAttribute("type","submit");
 
 	formularioNuevaTarea.addEventListener("submit",function(event){
@@ -24,21 +26,13 @@ function crearLista(unNombre,unaListaPrecargada){
 	return unaLista;
 }
 
-function inicializarTarea(unNombre,unaDescripcion,listaPadre,esPrecargado,estado){
+function inicializarTarea(unNombre,unaDescripcion,listaPadre,estado){
 	var nuevaTarea;
-	if(esPrecargado == undefined){
+
 		nuevaTarea = new Tarea(unNombre,unaDescripcion);
 		listaPadre.agregarTarea(nuevaTarea);
-	} else {
-		for(i in listaPadre.tareas){
-			var tareaPrecargada = listaPadre.tareas[i];
-			if(tareaPrecargada.nombre == unNombre){
-				var tareaPrecargada = listaPadre.tareas[i];
-				nuevaTarea = new Tarea(tareaPrecargada.nombre,tareaPrecargada.descripcion);
-			}
-		}
-	}
-
+		if(estado != undefined)
+			nuevaTarea.estado = estado;
 
 	var nodoListaPadre = document.getElementById(listaPadre.nombre);
 	agregarNodo(nuevaTarea.nombre,'li',nodoListaPadre);
@@ -66,7 +60,7 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre,esPrecargado,estado
 	});
 
 	nodoDescripcionTarea.addEventListener("click",function(){
-		activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea);
+		activarEdicionDescripcion(nodoDescripcionTarea,nuevaTarea,nodoNuevaTarea,listaPadre);
 		localStorage.clear();
 		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
 	});
@@ -77,12 +71,13 @@ function inicializarTarea(unNombre,unaDescripcion,listaPadre,esPrecargado,estado
 	return nuevaTarea;
 }
 
-function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
+function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea,listaPadre){
 	var descripcionTarea = document.getElementById(unaTarea.nombre+'-descripcion');
 	var valorDescripcionTarea = descripcionTarea.innerText;
 	nodoUnaTarea.removeChild(descripcionTarea);
 	var formularioEditarTarea = agregarNodo('formEditar-' + unaTarea.nombre,'form',nodoUnaTarea,"","secondLast");
 	var inputEditarTarea = agregarNodo('inputEditar-'+unaTarea.nombre,'input',formularioEditarTarea);
+	inputEditarTarea.setAttribute("type","text");
 	inputEditarTarea.value = valorDescripcionTarea;
 	var botonEnviarNuevaTarea = agregarNodo('editar','button',formularioEditarTarea);
 	botonEnviarNuevaTarea.setAttribute("type","submit");
@@ -93,6 +88,17 @@ function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
 		var nodoDescripcionTarea = agregarNodo(unaTarea.nombre+'-descripcion','p',nodoUnaTarea,valorDescripcionTarea,"secondLast");
 		nodoDescripcionTarea.addEventListener("click",function(){activarEdicionDescripcion(nodoDescripcionTarea,unaTarea,nodoUnaTarea)});
 		nodoUnaTarea.removeChild(formularioEditarTarea);
+
+		for(i in listaPadre.tareas){
+			var tareaCargada = listaPadre.tareas[i];
+			if(tareaCargada.nombre == unaTarea.nombre)
+				tareaCargada.descripcion = valorDescripcionTarea;
+		}
+
+		console.log("Lista Padre:");
+		console.log(listaPadre.tareas[0]);
+		localStorage.clear();
+		localStorage.setItem(listaPadre.nombre, JSON.stringify(listaPadre));
 	});
 
 }
@@ -100,6 +106,7 @@ function activarEdicionDescripcion(nodoUnaDescripcion,unaTarea,nodoUnaTarea){
 function eliminarTarea(nodoListaPadre,listaPadre,nodoUnaTarea,unaTarea){
 	listaPadre.eliminarTarea(unaTarea)
 	nodoListaPadre.removeChild(nodoUnaTarea);
+	
 }
 
 function eliminarLista(nodoUnaLista,unaLista){

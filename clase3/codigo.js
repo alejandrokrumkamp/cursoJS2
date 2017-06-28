@@ -14,14 +14,14 @@ var intentos = 5
 while(color != "verde" && intentos > 0){
 	color = prompt("Dame un color (escribe verde para terminar el bucle)","")
 	intentos--
-}*/
+}
 
-/*var color = ""
+var color = ""
 for(var intentos = 5;color != "verde" && intentos > 0;intentos--){
 	color = prompt("Dame un color (escribe verde para terminar el bucle)","")
 }*/
 
-/*var dias = ["lunes","martes","miercoles","jueves","viernes","sabado","domingo"];
+var dias = ["lunes","martes","miercoles","jueves","viernes","sabado","domingo"];
 var diaIngresado;
 var diaInvalido = false;
 var i;
@@ -51,4 +51,4 @@ do{
 			diaInvalido = true;
 		}
 	} 
-} while(diaInvalido && intentosRestantes > 0)*/
+} while(diaInvalido && intentosRestantes > 0)
