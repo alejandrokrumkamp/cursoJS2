@@ -1,6 +1,6 @@
 var init = function(){
 	var naves = [];
-	obtenerNaves(naves);
+	naves = obtenerNaves(naves);
 }
 
 var obtenerNaves= function(resultados,pagina,cantidadNavesRestantes) {
@@ -9,7 +9,7 @@ var obtenerNaves= function(resultados,pagina,cantidadNavesRestantes) {
         direccionUrl = 'http://swapi.co/api/starships/';
         pagina = 2;
 	} else{
-    	direccionUrl = 'http://swapi.co/api/starships/'+pagina+'/';
+    	direccionUrl = 'http://swapi.co/api/starships/?page='+pagina;
     	pagina++;
     }
     $.ajax({
@@ -18,8 +18,9 @@ var obtenerNaves= function(resultados,pagina,cantidadNavesRestantes) {
         dataType: 'json',
         success: function(data) {
         	var navesResultantes = data.results;
-        	var cantidadNavesTotales = data.count;
-        	var cantidadNavesRestantes = navesResultantes.length;
+        	if(cantidadNavesRestantes == undefined){
+        		cantidadNavesRestantes = data.count;
+        	}
 
         	for(i in navesResultantes){
         		resultados.push(navesResultantes[i]);
@@ -27,12 +28,16 @@ var obtenerNaves= function(resultados,pagina,cantidadNavesRestantes) {
         	}
 
         	if(cantidadNavesRestantes > 0){
-        		obtenerNaves= function(resultados,pagina,cantidadNavesRestantes)
+        		obtenerNaves(resultados,pagina,cantidadNavesRestantes);
         	}
         },
         error: function(data) {
             console.log('no llego la data' + data);
         }
     })
+
+    for(i in resultados){
+		console.log(resultados[i].name);
+	}
 };
 
