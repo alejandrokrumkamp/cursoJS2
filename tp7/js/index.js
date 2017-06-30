@@ -19,6 +19,25 @@ function Pelicula(id,nombre,descripcion,imagen,director){
 	this.agregarActor = function(nuevoActor) {
 		this.actores.push(nuevoActor);
 	}
+
+	this.editar = function(propiedad,nuevoValor) {
+		switch(propiedad){
+			case "nombre":
+				this.nombre = nuevoValor;
+			break;
+			case "descripcion":
+				this.descripcion = nuevoValor;
+			break;
+			case "imagen":
+				this.imagen = nuevoValor;
+			break;
+			case "director":
+				this.director = nuevoValor;
+			break;
+			default:
+				console.log("No existe o no se puede editar esa propiedad");
+		}
+	}
 }
 
 function Imdb(){
@@ -39,11 +58,12 @@ function Imdb(){
 	}
 }
 
-var killBill = new Pelicula(1,'Kill Bill','Una peli de tarantino','https://sneakernews.com/wp-content/uploads/2012/10/asics-gel-saga-ii-kill-bill-3.jpg','Tarantino');
+var killBill = new Pelicula(1,'Kill Bill','Una peli de Tarantino','https://sneakernews.com/wp-content/uploads/2012/10/asics-gel-saga-ii-kill-bill-3.jpg','Tarantino');
 killBill.agregarActor("Uma Thurman");
 
-var django = new Pelicula(2,'Django','Otra peli de tarantino','https://images-na.ssl-images-amazon.com/images/M/MV5BNzU5NzM4OTQxNV5BMl5BanBnXkFtZTgwOTQ5NjU0NzE@._V1_CR0,60,640,360_AL_UX477_CR0,0,477,268_AL_.jpg','Tarantino');
+var django = new Pelicula(2,'Django','Otra peli de Tarantino','https://images-na.ssl-images-amazon.com/images/M/MV5BNzU5NzM4OTQxNV5BMl5BanBnXkFtZTgwOTQ5NjU0NzE@._V1_CR0,60,640,360_AL_UX477_CR0,0,477,268_AL_.jpg','Tarantino');
 django.agregarActor("Samuel Jackson");
+django.editar("descripcion","Another movie made by Tarantino");
 var imdb = new Imdb;
 
 imdb.mostrarPeliculas();
