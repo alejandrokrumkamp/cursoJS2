@@ -1,0 +1,100 @@
+var body = document.getElementsByTagName('body')[0];
+agregarNodoTexto('h1','Peliculas',body);
+
+function agregarNodoTexto(etiqueta,texto,padre){
+	var nuevoNodo = document.createElement(etiqueta);
+	nuevoNodoTexto = document.createTextNode(texto);
+	nuevoNodo.appendChild(nuevoNodoTexto);
+	padre.appendChild(nuevoNodo);
+}
+
+function Pelicula(id,nombre,descripcion,imagen,director){
+	this.id = id;
+	this.nombre = nombre;
+	this.descripcion = descripcion;
+	this.imagen = imagen;
+	this.actores = [];
+	this.director = director
+
+	this.agregarActor = function(nuevoActor) {
+		this.actores.push(nuevoActor);
+	}
+
+	this.editar = function(propiedad,nuevoValor) {
+		switch(propiedad){
+			case "nombre":
+				this.nombre = nuevoValor;
+			break;
+			case "descripcion":
+				this.descripcion = nuevoValor;
+			break;
+			case "imagen":
+				this.imagen = nuevoValor;
+			break;
+			case "director":
+				this.director = nuevoValor;
+			break;
+			default:
+				console.log("No existe o no se puede editar esa propiedad");
+		}
+	}
+}
+
+function Imdb(){
+	this.peliculas = [];
+
+	this.agregarPelicula = function(nuevaPelicula){
+		if(this.peliculas.indexOf(nuevaPelicula) < 0)
+			this.peliculas.push(nuevaPelicula);
+	} 
+
+	this.mostrarPeliculas = function() {
+		for (i in this.peliculas){
+			agregarNodoTexto('h2',this.peliculas[i].nombre,body);
+			agregarNodoTexto('p',"Descripcion: "+this.peliculas[i].descripcion,body);
+			nuevaImagen = document.createElement('img');
+			nuevaImagen.setAttribute('src',this.peliculas[i].imagen);
+			nuevaImagen.setAttribute('width',200);
+			nuevaImagen.setAttribute('height',150);
+			body.appendChild(nuevaImagen);
+			agregarNodoTexto('p',"Director: "+this.peliculas[i].director,body);
+			agregarNodoTexto('p',"Actores: "+this.peliculas[i].actores,body);
+		}
+	}
+
+	this.eliminarPelicula = function(peliculaAEliminar){
+		var indicePeliculaAEliminar = this.peliculas.indexOf(peliculaAEliminar);
+		if(indicePeliculaAEliminar > 0)
+			this.peliculas.splice(indicePeliculaAEliminar,1);
+	}
+
+	this.ordenar = function(criterio){
+		if(criterio == "id")
+			this.peliculas.sort((a,b)=>{ return a.id - b.id;});
+		else
+			this.peliculas.sort((a,b)=>{ 
+				if (a.last_nom < b.last_nom)
+				    return -1;
+				  if (a.last_nom > b.last_nom)
+				    return 1;
+				  return 0;
+			});
+
+	}
+}
+
+var killBill = new Pelicula(1,'Kill Bill','Una peli de Tarantino','https://sneakernews.com/wp-content/uploads/2012/10/asics-gel-saga-ii-kill-bill-3.jpg','Tarantino');
+killBill.agregarActor("Uma Thurman");
+
+var django = new Pelicula(2,'Django','Otra peli de Tarantino','https://images-na.ssl-images-amazon.com/images/M/MV5BNzU5NzM4OTQxNV5BMl5BanBnXkFtZTgwOTQ5NjU0NzE@._V1_CR0,60,640,360_AL_UX477_CR0,0,477,268_AL_.jpg','Tarantino');
+django.agregarActor("Samuel Jackson");
+django.editar("descripcion","Another movie made by Tarantino");
+var imdb = new Imdb;
+
+
+imdb.agregarPelicula(django);
+imdb.eliminarPelicula(django);
+imdb.agregarPelicula(django);
+imdb.agregarPelicula(killBill);
+
+imdb.mostrarPeliculas();

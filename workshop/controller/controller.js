@@ -29,10 +29,10 @@ function crearLista(unNombre){
 function inicializarTarea(unNombre,unaDescripcion,listaPadre,estado){
 	var nuevaTarea;
 
-		nuevaTarea = new Tarea(unNombre,unaDescripcion);
-		listaPadre.agregarTarea(nuevaTarea);
-		if(estado != undefined)
-			nuevaTarea.estado = estado;
+	nuevaTarea = new Tarea(unNombre,unaDescripcion);
+	listaPadre.agregarTarea(nuevaTarea);
+	if(estado != undefined)
+		nuevaTarea.estado = estado;
 
 	var nodoListaPadre = document.getElementById(listaPadre.nombre);
 	agregarNodo(nuevaTarea.nombre,'li',nodoListaPadre);
