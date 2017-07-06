@@ -1,14 +1,14 @@
-var searchArtist= function(anArtist) {
+var searchArtist= function(anArtist,callback) {
     $.ajax({
         type:"POST",
         dataType: "json",
         url: 'https://platzi-music-api.now.sh/search?q='+anArtist+'&type=artist',
         success: function(data) {
-            return data;
+            callback(data);
         },
         error: function(data) {
             console.log('Error with code status ' + data.status);
-            return data;
+            callback(data);
         }
     })
 };

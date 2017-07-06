@@ -3,7 +3,7 @@ var init = function(){
     $("#searchForm").submit(function(e){
         e.preventDefault();
         var searchInputData = $("#searchInput").val();
-        showArtists(searchArtist(searchInputData));
+        searchArtist(searchInputData,showArtists);
     });
 
 }
