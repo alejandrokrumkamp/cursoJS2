@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Spotify search</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body onload="init()">
-
+<div class="containter">
+	<form id="searchForm">
+		<input type="text" id="searchInput">
+		<button id="searchButton">Search</button>
+	</form>
+</div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/api.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
